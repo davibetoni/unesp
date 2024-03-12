@@ -7,10 +7,10 @@ typedef struct Node{
 } Node;
 
 Node* push(Node *node, int x){
-  Node *nodevo = (Node*)malloc(sizeof(Node));
-  nodevo->info = x;
-  nodevo->next = node->next;
-  node->next = nodevo;
+  Node *new = (Node*)malloc(sizeof(Node));
+  new->info = x;
+  new->next = node->next;
+  node->next = new;
 
   return node;
 }
