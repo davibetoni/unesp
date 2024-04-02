@@ -1,36 +1,36 @@
 #include <iostream>
 #include <string.h>
+#include <queue>
 
 using namespace std;
 
-typedef struct Node{
-  int value;
-  Node *left;
-  Node *right;
-} *Node;
-
-void pos(Node tree, string s){
-  if(tree != NULL){
-    pos(tree->left, s);
-    pos(tree->right, s);
-    s += tree->value;
-  }
-}
-
-
 int main()
 {
-  int c;
-  int n;
-  string pre, in;
+  int c, n, j = 0;
+  queue<string> puts;
+  string pre, in, str;
 
   cin >> c;
 
-  while (c > 0)
+  while (j < c)
   {
     cin >> n >> pre >> in;
 
-    c--;
+    for (int i = 0; i < n; i++)
+    {
+      
+    }
+
+    puts.push(str);
+    str.clear();
+    j++;
+  }
+
+
+  for(int i = 0; i < c; i++)
+  {
+    cout << puts.front() << endl;
+    puts.pop();
   }
 
   return 0;
