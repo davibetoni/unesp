@@ -1,24 +1,37 @@
 #include <iostream>
-#include <stack>
-#include <cmath>
+#include <math.h>
+#include <queue>
 
 using namespace std;
 
 int main()
 {
-  long long followers, goal, average = 0, num, days = 0;
-  stack<long long> followers_per_day;
+  long long cur, goal, num, average = 0, days = 0, sum = 0;
+  queue<long long> followers;
 
-  cin >> followers >> goal;
+  cin >> cur >> goal;
 
-  while (followers_per_day.size() < 30)
+  for (int i = 0; i < 30; i++)
   {
     cin >> num;
-    followers_per_day.push(num);
-    average += num;
+    sum += num;
+    followers.push(num);
   }
 
-  cout << floor((goal - followers) / ceil(average / 30) + 1) << endl;
+  while(cur < goal){
+    long long first = followers.front();
+    long long average = ceil(sum / 30.0);
+
+    cur += average;
+    days++;
+
+    sum = sum - first + average;
+
+    followers.pop();
+    followers.push(average);
+  }
+
+  cout << days << endl;
 
   return 0;
 }
