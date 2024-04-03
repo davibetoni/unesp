@@ -19,13 +19,11 @@ int main()
   }
 
   while(cur < goal){
-    long long first = followers.front();
-    long long average = ceil(sum / 30.0);
+    average = ceil(sum / 30.0);
 
     cur += average;
     days++;
-
-    sum = sum - first + average;
+    sum = sum - followers.front() + average;
 
     followers.pop();
     followers.push(average);
