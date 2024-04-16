@@ -19,19 +19,20 @@ int dequeue(Node *fila){
     return -1;
   }
 
-  Node *l = fila;
-  
-  while(l->next != NULL){
-    if(l->next->next == NULL){
-      int info = l->next->info;
-      free(l->next);
-      l->next = NULL;
-      return info;
-    }
-    
-    l = l->next;
+  Node *node = fila;
+  Node *prev = NULL;
+  while(node->next != NULL){
+    prev = node;
+    node = node->next;
   }
 
+  int info = node->info;
+  if(prev != NULL){
+    prev->next = NULL;
+  }
+  free(node);
+
+  return info;
 }
 
 int main(){
