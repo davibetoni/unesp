@@ -1,50 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef struct Node{
-  int info;
+typedef struct Node
+{
+  char info[101];
   struct Node *next;
 } Node;
 
-Node* enqueue(Node *fila, int info){
-  Node *new = (Node*)malloc(sizeof(Node));
-  new->info = info;
+typedef Node *NodePtr;
+
+NodePtr enqueue(NodePtr fila, char *info)
+{
+  NodePtr new = (NodePtr)malloc(sizeof(Node));
+  strcpy(new->info, info);
   new->next = fila;
   return new;
 }
 
-int dequeue(Node *fila){
-  if(fila == NULL){
-    printf("Fila vazia\n");
-    return -1;
+char* dequeue(NodePtr fila)
+{
+  if (fila == NULL)
+  {
+    return NULL;
   }
+  else
+  {
+    NodePtr node = fila;
+    NodePtr prev = NULL;
 
-  Node *node = fila;
-  Node *prev = NULL;
-  while(node->next != NULL){
-    prev = node;
-    node = node->next;
+    while (node->next != NULL)
+    {
+      prev = node;
+      node = node->next;
+    }
+
+    char *info = strdup(node->info);
+
+    if (prev != NULL)
+    {
+      prev->next = NULL;
+    }
+    else
+    {
+      fila = NULL;
+    }
+    free(node);
+
+    return info;
   }
-
-  int info = node->info;
-  if(prev != NULL){
-    prev->next = NULL;
-  }
-  free(node);
-
-  return info;
 }
 
 int main(){
-  Node *fila = NULL;
+  NodePtr fila = NULL;
+  char string[101];
 
-  fila = enqueue(fila, 10);
-  fila = enqueue(fila, 5);
-  fila = enqueue(fila, 2);
+  string[0] = "1";
 
-  printf("%d\n", dequeue(fila));
-  printf("%d\n", dequeue(fila));
-  printf("%d\n", dequeue(fila));
+  fila = enqueue(fila, string[0]);
+  fila = enqueue(fila, "2");
+  fila = enqueue(fila, "3");
+
+  printf("%s\n", dequeue(fila));
+  printf("%s\n", dequeue(fila));
+  printf("%s\n", dequeue(fila));
 
   return 0;
 }
