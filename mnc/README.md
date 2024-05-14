@@ -1,6 +1,6 @@
 # Trabalho de Métodos Numéricos Computacionais
 
-Este repositório contém o trabalho de Métodos Numéricos Computacionais, desenvolvido como parte do curso de [Nome do Curso] da [Nome da Instituição].
+Este repositório contém o trabalho de Métodos Numéricos Computacionais, desenvolvido como parte do curso de Sistemas de Informação da Unesp, Bauru.
 
 ## Descrição
 
